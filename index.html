@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/script.js" defer></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <section id="main-Carga-Horaria">
+            <h1>Carga horária</h1>
+            <p id="ErroSemcargaHoraria">Não pode estar vazio!</p>
+            <div id="boxCargaHoraria">
+                <input type="text" class="formatar-input" id="carga-horaria" placeholder="00:00">
+                
+            </div>
+        </section>
+
+        <section id="main-batida-ponto">
+            <div id="marcacao-button">
+                <h1>Marcações</h1>
+
+                <button id="botao-dicionar-input-ponto">
+                    <span class="material-symbols-outlined">add</span>
+                </button>
+
+                <button id="botao-remover-input-ponto">
+                    <span class="material-symbols-outlined">remove</span>
+                </button>
+            </div>
+            <div id="boxErroPontoVazio">
+                <p id="ErroPontoVazio">Todos as marcações devem ser preenchidas!</p>
+            </div>
+            
+            <div id="batida-ponto">
+                <input type="text" class="formatar-input" placeholder="00:00">
+                <input type="text" class="formatar-input" placeholder="00:00">
+            </div>
+
+            
+        </section>
+
+        <div>
+            <button id="botao-calc">CALCULAR</button>
+        </div>
+
+        <section>
+            <table>
+                <tr id="NomeResult" >
+                    <th>Horas Trabalhadas</th>
+                    <th>Débito</th>
+                    <th>Crédito</th>
+                    <th>Horas Normais</th>
+                    <th>Adicional Noturno</th>
+                    <th>Intervalo</th>
+                </tr>
+                <tr id="ResultNumero">
+                    <th id="horas-trab">00:00</th>
+                    <th id="debito">00:00</th>
+                    <th id="credito">00:00</th>
+                    <th id="horas-normais">00:00</th>
+                    <th id="ad-noturno">00:00</th>
+                    <th id="intervalo">00:00</th>
+                </tr>
+            </table>
+        </section>
+        
+    </main>
+</body>
+</html>
+
