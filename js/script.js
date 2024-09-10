@@ -2,7 +2,7 @@
 const cargaHoraria = document.querySelector("#carga-horaria")
 const batidaDePonto = document.querySelectorAll("#batida-ponto .formatar-input")
 const botaoCalc = document.querySelector("#botao-calc")
-const horasTRap = document.querySelectorAll(".horas-trab")
+const horasTRab = document.querySelectorAll(".horas-trab")
 const debitoTxt = document.querySelectorAll(".debito")
 const creditoTxt = document.querySelectorAll(".credito")
 const horasNormais = document.querySelectorAll(".horas-normais")
@@ -92,8 +92,8 @@ function calcTempoTrabalhado(horasEmMinutos) {
 
     //exibe o resultado na tela
     const resultMinutosEmHoras = converterMinutosParaHoras(totMinutosTrabalhados);
-    horasTRap.forEach((horasTRap) =>{
-        horasTRap.innerText = resultMinutosEmHoras;
+    horasTRab.forEach((horasTRab) =>{
+        horasTRab.innerText = resultMinutosEmHoras;
     })
     return totMinutosTrabalhados;
 }
@@ -346,3 +346,6 @@ botaoRemovePonto.addEventListener("click", () => {
         divPaiParaADDponto.removeChild(divPaiParaADDponto.lastChild);
     }
 })
+
+
+
