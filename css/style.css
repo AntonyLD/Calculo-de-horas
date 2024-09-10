@@ -5,6 +5,221 @@
     
 }
 
+@media screen and (min-width: 375px) and (max-width:768px ){
+
+    main{
+        max-width: 100vw;
+        min-height: 100vh;
+    }
+
+    #main-Carga-Horaria{
+        margin: 55px 0px 0px 55px;
+        position: relative;
+    }
+
+    h1{
+        font-size: 21px;
+    }
+
+    #main-Carga-Horaria h1, span, #boxCargaHoraria{
+        margin-left: 15px;
+    }
+    
+    #ErroSemcargaHoraria{
+        font-size: 14px;
+        font-weight: bolder;
+        margin-left: 15px;
+        top: 35px;
+        height: 15px;
+        display: none;
+        color: red;
+    }
+
+    .formatar-input{
+        margin-bottom: 5px;
+        border-radius: 5px;
+        border: 1px solid black;
+        width: 89px;
+        height: 35px;
+
+    }
+
+    .formatar-input:focus{
+        border:1px solid #40A5DD;
+    }
+
+    #carga-horaria{
+        font-weight: bolder;
+        margin-top: 6px;
+        text-align: center;
+        width: 144px;
+        height: 35px;
+    }
+    
+
+    #carga-horaria::placeholder{
+        text-align: center;
+    }
+
+    #marcacao-button{
+        display: flex;
+        margin-top: 15px;
+        margin-left: 15px;
+    }
+
+    #marcacao-button button{
+        margin: 1px 0px 0px 25px;
+        width: 27px;
+        height: 27px;
+        font-size: 15px;
+
+        font-weight: bolder;
+        color: white;
+        background-color: #40A5DD;
+        border: 1px solid #40A5DD;
+        border-radius: 50%;
+    }
+
+    #botao-dicionar-input-ponto, #botao-remover-input-ponto{
+        position: relative;
+        transition: 0.3s;
+        
+    }
+
+    #botao-dicionar-input-ponto:hover, #botao-remover-input-ponto:hover{
+        background-color: #2e7ea8;
+        border: 1px solid #2e7ea8;
+        box-shadow: 1px 1px 5px black;
+    }
+
+    .material-symbols-outlined{
+        position: absolute;
+        bottom: 3px;
+        right: 4px;
+        font-size: 18px !important;
+    }
+
+    #ErroPontoVazio{
+        font-size: 14px;
+        margin-left: 15px;
+        font-weight: bolder;
+        top: 2px;
+        display: none;
+        height: 16px;
+        color: red;
+    }
+
+    #main-batida-ponto {
+        margin: 0px 0px 20px 55px;
+    }
+
+    #batida-ponto{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-top:5px;
+    }
+
+    #batida-ponto input {
+        font-weight: bolder;
+        text-align: center;
+        margin-left: 15px;
+    }
+
+    #batida-ponto input::placeholder{
+        text-align: center;
+    }
+
+    #botao-calc{
+        transition: 0.3s;
+        margin-left: 70px;
+        width: 145px;
+        height: 35px;
+        border-radius: 5px;
+        font-weight: bolder;
+        color: rgb(255, 255, 255);
+        border: 1px solid #40A5DD;
+        background-color: #40A5DD;
+    }
+
+    #botao-calc:hover{
+        background-color: #2e7ea8;
+        border: 1px solid #2e7ea8;
+        box-shadow: 2px 2px 5px black;
+    }
+
+    #tabela-mobile{
+        margin-top: 20px;
+    }
+
+    table {
+        width: 80%;
+        margin: 0 auto;
+        border-collapse: separate; 
+        border-spacing: 0; 
+        margin-bottom: 20px;
+    }
+
+    .horas-trab{
+        width: 170px;
+    }
+
+    .horas-normais{
+        width: 150px;
+    }
+
+    .ad-noturno{
+        width: 140px;
+    }
+    
+    .NomeResult th{
+        color: #40A5DD !important
+    }
+    
+    table th, table td {
+        padding: 10px;
+        text-align: center;
+    }
+    
+    table th {
+        border: none;
+    }
+    .ResultNumero th {
+        border: 1px solid #000000; 
+    }
+    .ResultNumero th:first-child {
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+    .ResultNumero th:last-child {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+
+    .horas-trab, .horas-normais{
+        border-right: none !important;
+    }
+
+    .credito, .intervalo{
+        border-left: none !important;
+    }
+
+    .debito{
+        border-left: none !important;
+        border-right: none !important;
+    }
+    
+    .ad-noturno{
+        border-left: none !important;
+        border-right: none !important;
+    }
+    #tabela-desktop {
+        display: none;
+    }
+    
+
+}
+
 @media screen and (min-width: 768px) and (max-width: 1900px ){
     main{
         max-width: 100vw;
@@ -189,217 +404,3 @@
     }
 }
 
-@media screen and (min-width: 375px) and (max-width:768px ){
-
-    main{
-        max-width: 100vw;
-        min-height: 100vh;
-    }
-
-    #main-Carga-Horaria{
-        margin: 55px 0px 0px 55px;
-        position: relative;
-    }
-
-    h1{
-        font-size: 21px;
-    }
-
-    #main-Carga-Horaria h1, span, #boxCargaHoraria{
-        margin-left: 15px;
-    }
-    
-    #ErroSemcargaHoraria{
-        font-size: 14px;
-        font-weight: bolder;
-        margin-left: 15px;
-        top: 35px;
-        height: 15px;
-        display: none;
-        color: red;
-    }
-
-    .formatar-input{
-        margin-bottom: 5px;
-        border-radius: 5px;
-        border: 1px solid black;
-        width: 89px;
-        height: 35px;
-
-    }
-
-    .formatar-input:focus{
-        border:1px solid #40A5DD;
-    }
-
-    #carga-horaria{
-        font-weight: bolder;
-        margin-top: 6px;
-        text-align: center;
-        width: 144px;
-        height: 35px;
-    }
-    
-
-    #carga-horaria::placeholder{
-        text-align: center;
-    }
-
-    #marcacao-button{
-        display: flex;
-        margin-top: 15px;
-        margin-left: 15px;
-    }
-
-    #marcacao-button button{
-        margin: 1px 0px 0px 25px;
-        width: 27px;
-        height: 27px;
-        font-size: 15px;
-
-        font-weight: bolder;
-        color: white;
-        background-color: #40A5DD;
-        border: 1px solid #40A5DD;
-        border-radius: 50%;
-    }
-
-    #botao-dicionar-input-ponto, #botao-remover-input-ponto{
-        position: relative;
-        transition: 0.3s;
-        
-    }
-
-    #botao-dicionar-input-ponto:hover, #botao-remover-input-ponto:hover{
-        background-color: #2e7ea8;
-        border: 1px solid #2e7ea8;
-        box-shadow: 1px 1px 5px black;
-    }
-
-    .material-symbols-outlined{
-        position: absolute;
-        bottom: 3px;
-        right: 4px;
-        font-size: 18px !important;
-    }
-
-    #ErroPontoVazio{
-        font-size: 14px;
-        margin-left: 15px;
-        font-weight: bolder;
-        top: 2px;
-        display: none;
-        height: 16px;
-        color: red;
-    }
-
-    #main-batida-ponto {
-        margin: 0px 0px 20px 55px;
-    }
-
-    #batida-ponto{
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        padding-top:5px;
-    }
-
-    #batida-ponto input {
-        font-weight: bolder;
-        text-align: center;
-        margin-left: 15px;
-    }
-
-    #batida-ponto input::placeholder{
-        text-align: center;
-    }
-
-    #botao-calc{
-        transition: 0.3s;
-        margin-left: 70px;
-        width: 145px;
-        height: 35px;
-        border-radius: 5px;
-        font-weight: bolder;
-        color: rgb(255, 255, 255);
-        border: 1px solid #40A5DD;
-        background-color: #40A5DD;
-    }
-
-    #botao-calc:hover{
-        background-color: #2e7ea8;
-        border: 1px solid #2e7ea8;
-        box-shadow: 2px 2px 5px black;
-    }
-
-    #tabela-mobile{
-        margin-top: 20px;
-    }
-
-    table {
-        width: 80%;
-        margin: 0 auto;
-        border-collapse: separate; 
-        border-spacing: 0; 
-        margin-bottom: 20px;
-    }
-
-    #horas-trab{
-        width: 170px;
-    }
-
-    #horas-normais{
-        width: 150px;
-    }
-
-    #ad-noturno{
-        width: 140px;
-    }
-    
-    #NomeResult{
-        color: #40A5DD;
-    }
-    
-    table th, table td {
-        padding: 10px;
-        text-align: center;
-    }
-    
-    table th {
-        border: none;
-    }
-    #ResultNumero th {
-        border: 1px solid #000000; 
-    }
-    #ResultNumero th:first-child {
-        border-top-left-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-    #ResultNumero th:last-child {
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-    }
-
-    #horas-trab, #horas-normais{
-        border-right: none !important;
-    }
-
-    #credito, #intervalo{
-        border-left: none !important;
-    }
-
-    #debito{
-        border-left: none !important;
-        border-right: none !important;
-    }
-    
-    #ad-noturno{
-        border-left: none !important;
-        border-right: none !important;
-    }
-    #tabela-desktop {
-        display: none;
-    }
-    
-
-}

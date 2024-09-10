@@ -2,12 +2,12 @@
 const cargaHoraria = document.querySelector("#carga-horaria")
 const batidaDePonto = document.querySelectorAll("#batida-ponto .formatar-input")
 const botaoCalc = document.querySelector("#botao-calc")
-const horasTRap = document.querySelector("#horas-trab")
-const debitoTxt = document.querySelector("#debito")
-const creditoTxt = document.querySelector("#credito")
-const horasNormais = document.querySelector("#horas-normais")
-const adNoturno = document.querySelector("#ad-noturno")
-const intervalo = document.querySelector("#intervalo")
+const horasTRap = document.querySelectorAll(".horas-trab")
+const debitoTxt = document.querySelectorAll(".debito")
+const creditoTxt = document.querySelectorAll(".credito")
+const horasNormais = document.querySelectorAll(".horas-normais")
+const adNoturno = document.querySelectorAll(".ad-noturno")
+const intervalo = document.querySelectorAll(".intervalo")
 const formatarInput = document.querySelectorAll(".formatar-input")
 const botaoADDponto = document.querySelector("#botao-dicionar-input-ponto")
 const botaoRemovePonto = document.querySelector("#botao-remover-input-ponto")
@@ -92,7 +92,9 @@ function calcTempoTrabalhado(horasEmMinutos) {
 
     //exibe o resultado na tela
     const resultMinutosEmHoras = converterMinutosParaHoras(totMinutosTrabalhados);
-    horasTRap.innerText = resultMinutosEmHoras;
+    horasTRap.forEach((horasTRap) =>{
+        horasTRap.innerText = resultMinutosEmHoras;
+    })
     return totMinutosTrabalhados;
 }
 
@@ -115,7 +117,9 @@ function calcIntervalo(horario) {
     }
 
     const resultIntervalo = converterMinutosParaHoras(totMinutosIntervalo)
-    intervalo.innerText = `${resultIntervalo}`
+    intervalo.forEach((intervalo) =>{
+        intervalo.innerText = resultIntervalo;
+    })
 
 }
 
@@ -138,13 +142,18 @@ function calcDebitoCredito(tempoTrabalhado, cargaHorariaMinutos) {
     // Se o tempo trabalhado foi menor que a carga horária
     else if (diferenca < -tolerancia) {
         debito = Math.abs(diferenca);
-        debitoTxt.innerText = `${converterMinutosParaHoras(debito)}`
+        debitoTxt.forEach((debitoTxt) =>{
+            debitoTxt.innerText = converterMinutosParaHoras(debito);
+        })
     }
     // 
     else if (diferenca > tolerancia) {
 
         credito = diferenca; 
-        creditoTxt.innerText = `${converterMinutosParaHoras(credito)}`
+        creditoTxt.forEach((creditoTxt) =>{
+            creditoTxt.innerText = converterMinutosParaHoras(credito);
+        })
+        
     }
 }
 
@@ -157,11 +166,18 @@ function calcHorasTrabNormais(cargaHorariaMinutos) {
     }
     // Se o total de minutos trabalhados for maior que a carga horária
     if (totMinutosTrabalhados > cargaHorariaMinutos) {
-        horasNormais.innerText = `${converterMinutosParaHoras(cargaHorariaMinutos)}` // Exibe a carga horária máxima permitida
+        // Exibe a carga horária máxima estipulada
+        horasNormais.forEach((horasNormais) =>{
+            horasNormais.innerText = converterMinutosParaHoras(cargaHorariaMinutos);
+        })
+        
     }
-    // Se o total de minutos trabalhados for menor ou igual à carga horária
+    // Se for menor exibe o tempo trabalhado
     else {
-        horasNormais.innerText = `${converterMinutosParaHoras(totMinutosTrabalhados)}`;
+
+        horasNormais.forEach((horasNormais) =>{
+            horasNormais.innerText = converterMinutosParaHoras(totMinutosTrabalhados);
+        })
     }
 }
 
@@ -177,7 +193,8 @@ function calcAdicionalNoturno(horasEmMinutos) {
 
         // Ajusta para o caso de atravessar a meia-noite
         if (saida < entrada) {
-            saida += 24 * 60; // Adiciona 24 horas em minutos para corrigir
+            // Adiciona 24 horas em minutos para corrigir
+            saida += 24 * 60; 
         }
 
         // Calcula minutos de trabalho noturno
@@ -193,7 +210,9 @@ function calcAdicionalNoturno(horasEmMinutos) {
     const minutos = minutosNoturnos % 60; // Restante dos minutos
 
     // Exibe no formato HH:MM
-    adNoturno.innerText = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+    adNoturno.forEach((adNoturno) =>{
+        adNoturno.innerText = `${horas.toString().padStart(2, '0')}:${minutos.toString().padStart(2, '0')}`;
+    })
 }
 
 //Verifica se o input de Carga horária está vazio para exibir erro.
@@ -219,9 +238,9 @@ function verificarInputsVazios(batidaDePonto, erroElemento) {
 
     // Atualiza a cor do span de erro
     if (algumErro) {
-        erroPontoVazio.style.display = 'block'; // Exibe a mensagem de erro
+        erroPontoVazio.style.display = 'block'; 
     } else {
-        erroPontoVazio.style.display = 'none'; // Oculta a mensagem de erro
+        erroPontoVazio.style.display = 'none';
     }
 
     return algumErro;
@@ -229,6 +248,10 @@ function verificarInputsVazios(batidaDePonto, erroElemento) {
 
 //Eventos
 botaoCalc.addEventListener("click", () => {
+
+    if (valor.length < 5) {
+        return;
+    }
 
     const cargaHorariaMinutos = converterParaMinuto(cargaHoraria.value)
 
@@ -240,13 +263,17 @@ botaoCalc.addEventListener("click", () => {
     calcAdicionalNoturno(horasEmMinutos)
 })
 
+let valor = 0
+
 // Função de formatação que adiciona o evento a um input específico
 function formatarHoraInput(input) {
     input.addEventListener('input', (e) => {
-        let valor = e.target.value
+        valor = e.target.value
     
         // Tira tudo que não é número e :
         valor = valor.replace(/[^0-9:]/g, '')
+
+        
 
         // Verifica se tem 2 números para colocar o :
         if (valor.length > 2 && valor.indexOf(':') === -1) {
