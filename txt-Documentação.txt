@@ -1,0 +1,111 @@
+Forma de uso:
+1- para realizar o calculo nehum campo pode estár vazio.
+2- Preencher todos os campos com formato valido de Horas
+3- Para remover um input de batida de ponto o numro de inputs tem que ser maior que 2
+
+Funções
+converterParaMinuto
+Descrição: Transforma o valor recebido em minutos
+Funcionamento:
+Divide a string horario em horas e minutos usando split(':').
+Converte essas partes de string para numeros
+Calcula o total de minutos multiplicando as horas por 60 e somando os minutos.
+
+converterMinutosParaHoras
+Descrição: Transforma minutos para horas
+Funcionamento:
+Pegando o valor total em minutos  e faz a divisão por 60 pegando apenas o valor decimal
+Pega o resto da divisão dos minutos por 60
+Formata a saída para garantir que as horas e minutos tenham dois dígitos.
+
+ajustaHoraDepoisMeiaNoite
+Descrição: Ajusta o horário de saída para corrigir a passagem da meia-noite.
+Funcionamento:
+Se o horário de saída é menor que o de entrada, adiciona 24 horas (em minutos) ao horário de saída.
+Retorna o horário de saída ajustado.
+
+batidasPonto
+Descrição: Coleta e converte os horários de marcação de ponto em minutos.
+Funcionamento:
+Seleciona todos os inputs dentro da div com o id "batida-ponto".
+Verifica se algum input está vazio e exibe um erro se necessário.
+Converte os horários dos inputs para minutos e armazena em um array de objetos.
+
+calcTempoTrabalhado
+Descrição: Calcula o total de minutos trabalhados a partir dos horários de entrada e saída.
+Funcionamento:
+Verifica se o número de entradas é par; caso contrário, interrompe a função.
+Calcula o tempo trabalhado para cada par de horários (entrada e saída).
+Atualiza a exibição no HTML, total de minutos trabalhados convertido para o formato horas
+
+calcIntervalo
+Descrição: Calcula o total de minutos de intervalo a partir dos horários.
+Funcionamento:
+Se há mais de dois horários, calcula o intervalo entre cada par de horários.
+Se não mais de dois horários automaticamente o intervalo recebe 0
+Atualiza a exibição no HTML de minutos de intervalo convertido para horas
+
+calcDebitoCredito
+Descrição: Calcula o débito e crédito de horas com base na carga horária e no tempo trabalhado.
+Funcionamento:
+Calcula a diferença entre o tempo trabalhado e a carga horária.
+Se a diferença estiver dentro de uma tolerância de 10 minutos, não gera nem débito nem crédito
+Se o tempo trabalhado for menor que a carga horária, gera débito
+Se o tempo trabalhado for maior que a carga horária, gera crédito
+
+calcHorasTrabNormais
+Descrição: Calcula e exibe as horas normais trabalhadas dentro da carga horária.
+Funcionamento:
+Verifica se o input de carga horária está vazio se estiver exibe erro
+Se o total de minutos trabalhados for maior que a carga horária, exibe o valor da carga horária.
+Caso contrário, exibe o tempo trabalhado.
+
+calcAdicionalNoturno
+Descrição: Calcula o total de minutos de trabalho noturno.
+Funcionamento:
+Itera sobre os horários de entrada e saída.
+Ajusta os horários que passam da meia-noite.
+Pega a entrada transformada em minutos, se esse valor for menor que o ponto de saida  o minuto recebe mais 1
+Dentro do if se o minuto for maior ou igual ao inicio do noturno ou menor que o fim do noturno ele soma mais uma para minutosnoturnos
+Atualiza a exibição no HTML em formato de horas
+
+erroInputVazio(cargaHoraria)
+Descrição: Verifica se o input de carga horária está vazio e exibe um erro se necessário.
+Funcionamento:
+Checa se o valor do input cargaHoraria está vazio.
+Exibe ou oculta o erro com base na verificação.
+
+verificarInputsVazios(batidaDePonto)
+Descrição: Verifica se algum dos inputs de marcação de ponto está vazio e exibe um erro se necessário.
+Funcionamento:
+Itera sobre os inputs de ponto.
+Verifica se algum input está vazio.
+Exibe ou oculta o erro com base na verificação.
+
+Eventos
+
+BotaoCalc
+Descrição: Evento que chama as funções ao clicar em calcular
+Funcionamento:
+Caso o valor dentro dos inputs tiver um comprimento menor que 5, não acontece nada.
+
+formatarHoraInput
+Descrição:Toda vez que o usuário digita algo dentro dos inputs ele verifica oque foi digitado.
+Funcionamento:
+Verifica se tem ao menos dois numeros para poder colocar o :
+Limita o input a 5 caracteres
+Limita o primeiro digito do input a 0 1 ou 2
+Limita o segundo dígito a 0 ao 3, caso o primeiro seja 2
+Limita o primeiro digito dos minutos do 0 ao 5
+
+botaoADDponto
+Descrição:Adiciona e remove os inputs de bater ponto
+Funcionamento:
+Cria os inputs de dois em dois
+Da tipo classe e coloca um placeholder nos inputs criados
+Adiciona os inputs ao pai
+
+botaoRemovePonto
+Descrição: Remove os inputs adicionados.
+Funcionamento:
+Se a quantidade de inputs de ponto for maior que 2 faz a remoção dos dois ultimos inputs.
