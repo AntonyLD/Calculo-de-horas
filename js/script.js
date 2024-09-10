@@ -49,11 +49,10 @@ function ajustaHoraDepoisMeiaNoite(saida, entrada) {
 
 function batidasPonto () {
     // Seleciona todos os inputs dentro da div com o id "batida-ponto" sempre que a função for chamada
-    const inputsPonto = Array.from(document.querySelectorAll('#batida-ponto .formatar-input'));
-    const erroElemento = document.getElementById('erro-batida-ponto');
+    const inputsPonto = Array.from(document.querySelectorAll("#batida-ponto .formatar-input"));
 
     // Verifica se algum input está vazio e exibe erros
-    if (verificarInputsVazios(inputsPonto, erroElemento)) {
+    if (verificarInputsVazios(inputsPonto)) {
         return; // Interrompe a execução se houver erros
     }
 
@@ -100,28 +99,38 @@ function calcTempoTrabalhado(horasEmMinutos) {
 
 //Calcula o intervalo
 function calcIntervalo(horario) {
-    let totMinutosIntervalo = 0
+    let totMinutosIntervalo = 0;
 
-    //Verifica se dentro do Array tem mais de dois elementos.
+    // Verifica se dentro do Array tem mais de dois elementos.
     if (horario.length > 2) {
+        
         for (let i = 1; i < horario.length - 1; i += 2) {
-            const entrada = horario[i].minutos
-            const saida = horario[i + 1].minutos
+            let entrada = horario[i].minutos;
+            let saida = horario[i + 1].minutos;
 
-            //calcula o periodo trabalhado para o par de horários a cima
-            totMinutosIntervalo += saida - entrada
+            // Verifica se a saída é menor que a entrada (passa da meia-noite)
+            if (saida < entrada) {
+                // Adiciona 24 horas (em minutos) à saída
+                saida += 24 * 60;
+            }
+
+            // Calcula o período de intervalo entre entrada e saída
+            totMinutosIntervalo += saida - entrada;
         }
     } else {
-        //Define o intervalo como 0 caso não tenha mais de duas batidas.
+        // Define o intervalo como 0 caso não tenha mais de duas batidas.
         totMinutosIntervalo = 0;
     }
 
-    const resultIntervalo = converterMinutosParaHoras(totMinutosIntervalo)
-    intervalo.forEach((intervalo) =>{
-        intervalo.innerText = resultIntervalo;
-    })
+    // Converte o total de minutos para o formato de horas
+    const resultIntervalo = converterMinutosParaHoras(totMinutosIntervalo);
 
+    // Atualiza o elemento HTML com o resultado
+    intervalo.forEach((intervalo) => {
+        intervalo.innerText = resultIntervalo;
+    });
 }
+
 
 
 //Calculo de crédito e débito
@@ -280,11 +289,6 @@ function formatarHoraInput(input) {
             valor = valor.slice(0, 2) + ':' + valor.slice(2);
         }
 
-        // Limita a quantidade de número após o :
-        if (valor.length > 5) {
-            valor = valor.slice(0, 5);
-        }
-
         // Limita o primeiro dígito a 0, 1 ou 2
         if (valor.length === 1) {
             valor = valor.replace(/[^0-2]/g, '');
@@ -303,7 +307,7 @@ function formatarHoraInput(input) {
             valor = valor.slice(0, 3) + valor[3].replace(/[^0-5]/g, '');
         }
 
-        // Limita a quantidade de caracteres no total a 5 (HH:MM)
+        // Limita a quantidade de caracteres no total a 5 
         if (valor.length > 5) {
             valor = valor.slice(0, 5);
         }
@@ -346,6 +350,3 @@ botaoRemovePonto.addEventListener("click", () => {
         divPaiParaADDponto.removeChild(divPaiParaADDponto.lastChild);
     }
 })
-
-
-
