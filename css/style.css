@@ -165,6 +165,7 @@
         padding: 10px;
         border-left: none; 
         border-right: none; 
+        
     }
     
     #ResultNumero th:first-child {
@@ -178,7 +179,8 @@
         border-bottom-right-radius: 10px;
         border-right: 1px solid black;
     }
-    
+
+    #ResultNumero th{
+        width: 190px;
+    }
 }
-
-
