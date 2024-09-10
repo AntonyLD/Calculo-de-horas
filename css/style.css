@@ -88,6 +88,7 @@
     #botao-dicionar-input-ponto:hover, #botao-remover-input-ponto:hover{
         background-color: #2e7ea8;
         border: 1px solid #2e7ea8;
+        box-shadow: 1px 1px 5px black;
     }
 
     .material-symbols-outlined{
@@ -143,6 +144,7 @@
     #botao-calc:hover{
         background-color: #2e7ea8;
         border: 1px solid #2e7ea8;
+        box-shadow: 2px 2px 5px black;
     }
 
     table {
