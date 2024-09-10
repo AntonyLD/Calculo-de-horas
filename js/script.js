@@ -1,4 +1,4 @@
-//Seletor DOM
+//Seletores DOM
 const cargaHoraria = document.querySelector("#carga-horaria")
 const batidaDePonto = document.querySelectorAll("#batida-ponto .formatar-input")
 const botaoCalc = document.querySelector("#botao-calc")
@@ -15,7 +15,7 @@ const divPaiParaADDponto = document.querySelector("#batida-ponto")
 const erroCargaHoraria = document.querySelector("#ErroSemcargaHoraria")
 const erroPontoVazio = document.querySelector("#ErroPontoVazio")
 
-//Funções
+//FUNÇÕES
 function converterParaMinuto(horario) {
     //separa e transforma a string em numero
     const [horas, minutos] = horario.split(':').map(Number);
@@ -27,14 +27,17 @@ let horasEmMinutos = []
 
 // Voltar de minutos para horas
 function converterMinutosParaHoras(minutos) {
+    //Faz o calculo de minutos para horas
     const horas = Math.floor(minutos / 60)
+    //Calcula o restante dos minutos
     const minutosRestantes = minutos % 60
+    //formata os numeros do resultado, colocando um 0 a esquerda se for preciso.
     return `${String(horas).padStart(2, "0")}:${String(minutosRestantes).padStart(2, "0")}`
 }
 
 let totMinutosTrabalhados = 0
 
-function ajustaHoraDepoisMeianoite(saida, entrada) {
+function ajustaHoraDepoisMeiaNoite(saida, entrada) {
     // Se o horário de saída for menor que o de entrada = passou da meia noite
     if (saida < entrada) {
         // Adiciona 24 horas em minutos para corrigir
@@ -68,18 +71,20 @@ function batidasPonto () {
 function calcTempoTrabalhado(horasEmMinutos) {
     totMinutosTrabalhados = 0
 
-    //verifica seu o numero de pontos é par
+    //verifica seu o numero de pontos impar se não for interrompe o código
     if (horasEmMinutos.length % 2 !== 0) {
         return;
     }
 
     // Calcula o tempo trabalhado
     for (let i = 0; i < horasEmMinutos.length; i += 2) {
+        //Pega o horario na posição i
         const entrada = horasEmMinutos[i].minutos
+        //Pega o horaio de saida na posição i
         let saida = horasEmMinutos[i + 1].minutos
 
-        ///////////////
-        saida = ajustaHoraDepoisMeianoite(saida, entrada)
+        
+        saida = ajustaHoraDepoisMeiaNoite(saida, entrada)
 
         //calcula o periodo trabalhado para o par de horários a cima
         totMinutosTrabalhados += saida - entrada
@@ -95,8 +100,8 @@ function calcTempoTrabalhado(horasEmMinutos) {
 function calcIntervalo(horario) {
     let totMinutosIntervalo = 0
 
-    if (horario.length >= 2) {
-        console.log(horario.length)
+    //Verifica se dentro do Array tem mais de dois elementos.
+    if (horario.length > 2) {
         for (let i = 1; i < horario.length - 1; i += 2) {
             const entrada = horario[i].minutos
             const saida = horario[i + 1].minutos
@@ -128,17 +133,17 @@ function calcDebitoCredito(tempoTrabalhado, cargaHorariaMinutos) {
 
     // Verifica dentro da tolerância se cumpriu a carga horária
     if (Math.abs(diferenca) <= tolerancia) {
-        console.log("Cumpriu a carga horária");
+        return;
     }
     // Se o tempo trabalhado foi menor que a carga horária
     else if (diferenca < -tolerancia) {
-
-        debito = Math.abs(diferenca); // Pegamos o débito como positivo
+        debito = Math.abs(diferenca);
         debitoTxt.innerText = `${converterMinutosParaHoras(debito)}`
     }
-    // Se o tempo trabalhado foi maior que a carga horária
+    // 
     else if (diferenca > tolerancia) {
-        credito = diferenca; // Crédito será o valor positivo da diferença
+
+        credito = diferenca; 
         creditoTxt.innerText = `${converterMinutosParaHoras(credito)}`
     }
 }
